@@ -86,7 +86,7 @@ endfunction
 "For convinience~
 nnoremap <leader>p "+p
 vnoremap <leader>y "+y
-nnoremap <leader>y mqggvG"+y`q
+nnoremap <leader>y mqggvG$"+y`q
 
 "One-key Compilerun
 nnoremap <F10> :call CompileRun()<CR>
