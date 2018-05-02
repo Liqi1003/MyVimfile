@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     Lc-3
 " Author:       Qi Li
-" Last Change:  2018 May 1
+" Last Change:  2018 May 2
 
 syn keyword  binDataMove    LD LDR LDI ST STR STI LEA contained
 syn keyword  binCalculate   AND ADD NOT contained
