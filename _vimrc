@@ -1,4 +1,4 @@
-"Last modified: 2018/3/15
+"Last modified: 2018/5/1
 """"""""""""""""""""""""""""""""""""
 "System Settings
 source $VIMRUNTIME/vimrc_example.vim
@@ -10,6 +10,7 @@ syntax enable
 "Plugins
 set nocp
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -41,7 +42,7 @@ if has('gui_running')
     let g:solarized_visibility='normal'
     set background=dark
     set guifont=Lucida_Console:h16
-    colorscheme NeoSolarized
+    colorscheme Solarized
 else
     colorscheme desert
 endif
@@ -80,9 +81,9 @@ inoremap ] <c-r>=ClosePair(']')<CR>
 
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
-	return "\<Right>"
+        return "\<Right>"
     else
-	return a:char
+        return a:char
     endif
 endfunction
 
@@ -92,73 +93,12 @@ endfunction
 "For convinience~
 nnoremap <leader>p "+p
 vnoremap <leader>y "+y
-nnoremap <leader>y mqggvG"+y`q
+nnoremap <leader>y mqggvG$"+y`q
 
 "One-key Compilerun
 nnoremap <F10> :call CompileRun()<CR>
-function! CompileRun()
-    execute "w"
-    if &filetype == 'c'
-	execute "!gcc % -o %<"
-	execute "! %<"
-    elseif &filetype == 'java'
-	execute "!javac % -d ../class"
-	execute "!java %<"
-    elseif &filetype == 'python'
-        execute "read !python %"
-    endif
-endfunction
 
-"Different filetypes
-autocmd BufNewFile,Bufread *.c execute ":call C()"
-function! C()
-    nnoremap <leader>/ :call CJAnnotate()<CR>
-    nnoremap <leader>; :call AddColon()<CR>
-    inoremap { {<CR>}<Esc>O
-    inoremap <leader>{ {}<Esc>i
-    iabbrev main int main(void)<CR>{
-    inoreabbrev inio #include<stdio.h>
-    inoreabbrev inmath #include<math.h>
-endfunction
-
-autocmd BufNewFile,Bufread *.java execute ":call Java()"
-function! Java()
-    nnoremap <leader>/ :call CJAnnotate()<CR>
-    nnoremap <leader>; :call AddColon()<CR>
-    inoremap { {<CR>}<Esc>O
-    inoremap <leader>{ {}<Esc>i
-    iabbrev main public static void main(String[] args)<CR>{
-    iabbrev setm public void set()<CR>{
-    iabbrev getI public int get()<CR>{return this.
-    iabbrev getS public String get()<CR>{return this.
-endfunction
-
-autocmd BufNewFile,BufRead *.py execute ":call Python()"
-function! Python()
-    nnoremap <leader>/ :call PAnnotate()<CR>
-    inoreabbrev immath from math import
-endfunction
-
-
-function! AddColon()
-    execute "normal! mqA;\<Esc>`q"
-endfunction
-
-function! CJAnnotate()
-    if match(getline('.'), '//') == -1
-        execute "normal! mqI//\<Esc>`q"
-    else
-        execute "normal! mq^2x`q"
-    endif
-endfunction
-
-function! PAnnotate()
-    if match(getline('.'), '#') == -1
-        execute "normal! mqI#\<Esc>`q"
-    else
-        execute "normal! mq^x`q"
-    endif
-endfunction
+autocmd BufNewFile,BufRead *.bin execute "set filetype=bin"
 
 "Fast way of modifying _vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
