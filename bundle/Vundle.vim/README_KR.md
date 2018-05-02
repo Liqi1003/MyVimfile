@@ -1,4 +1,4 @@
-﻿## [Vundle 유지보수 돕기](https://github.com/VundleVim/Vundle.vim/issues/383)
+## [Vundle 유지보수 돕기](https://github.com/VundleVim/Vundle.vim/issues/383)
 
 ## 소개
 
