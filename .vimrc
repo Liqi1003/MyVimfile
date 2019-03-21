@@ -48,8 +48,8 @@ set number
 set ruler
 set cindent
 set smartindent
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 set nobackup
@@ -96,7 +96,7 @@ nnoremap <F10> :call CompileRun()<CR>
 autocmd BufNewFile,BufRead *.bin execute "set filetype=bin"
 
 "Fast way of modifying _vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
+nnoremap <leader>sv :source ~/.vim/.vimrc<CR>
 
 """"""""""""""""""""""""""""""""""""
