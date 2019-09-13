@@ -96,7 +96,7 @@ nnoremap <F10> :call CompileRun()<CR>
 autocmd BufNewFile,BufRead *.bin execute "set filetype=bin"
 
 "Fast way of modifying _vimrc
-nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
-nnoremap <leader>sv :source ~/.vim/.vimrc<CR>
+nnoremap <leader>ev :vsplit ~/.vimrc<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
 
 """"""""""""""""""""""""""""""""""""
